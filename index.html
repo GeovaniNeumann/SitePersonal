@@ -12,7 +12,7 @@
             --primary: #0a0a0a;
             --secondary: #f8f8f8;
             --accent: #ff4d4d;
-            --accent-dark: #e60000;
+            --accent-dark: #ff0d0d;
             --text: #e0e0e0;
             --light-gray: #1a1a1a;
             --dark-gray: #121212;
@@ -34,6 +34,16 @@
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
         }
+
+        .dev-link {
+    color: #aaa; /* Cinza claro */
+    text-decoration: none;
+    font-size: 0.9rem; /* Tamanho menor */
+}
+
+.dev-link:hover {
+    color: var(--accent);
+}
         
         /* Animação de partículas */
         .particles {
@@ -162,6 +172,7 @@
         /* Hero Section com efeito parallax */
         .hero {
             height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.ibb.co/jd7bkKP/Logobrito.jpg') no-repeat center center/cover;
             min-height: 600px;
             display: flex;
             align-items: center;
@@ -193,12 +204,12 @@
             opacity: 0.7;
         }
         
-        .hero-content {
-            max-width: 600px;
-            transform: translateY(50px);
-            opacity: 0;
-            animation: fadeInUp 1s forwards 0.5s;
-        }
+            .hero-content {
+                max-width: 600px;
+                transform: translateY(50px);
+                opacity: 0;
+                animation: fadeInUp 1s forwards 0.5s;
+            }
         
         @keyframes fadeInUp {
             to {
@@ -212,18 +223,18 @@
             margin-bottom: 20px;
             font-weight: 700;
             line-height: 1.2;
-            background: linear-gradient(to right, #fff, var(--accent));
+            background: linear-gradient(to right, #fdfdfd, var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
+            text-shadow: 0 0 20px rgba(255, 8, 8, 0.993);
         }
         
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 60px;
             color: #ffffff;
-            opacity: 0.9;
+            opacity: 2.0;
         }
         
         .cta-button {
@@ -273,11 +284,9 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            transform: perspective(1000px) rotateY(15deg);
-            transition: all 0.5s ease;
-            z-index: 1;
+            transition: all 0.5s ease;  
             border: 5px solid var(--accent);
-            animation: float 6s ease-in-out infinite;
+            
         }
         
         @keyframes float {
@@ -285,10 +294,10 @@
             50% { transform: perspective(1000px) rotateY(15deg) translateY(-20px); }
         }
         
-        .hero-image:hover {
-            transform: perspective(1000px) rotateY(0deg);
-            box-shadow: var(--neon-effect);
-        }
+            .hero-image:hover {
+                transform: perspective(1000px) rotateY(0deg);
+                box-shadow: var(--neon-effect);
+            }
         
         .hero-image img {
             width: 100%;
@@ -395,8 +404,6 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transform: perspective(1000px) rotateY(-10deg);
-            transition: all 0.5s ease;
             border: 5px solid var(--accent);
         }
         
@@ -1020,9 +1027,7 @@
             <p>Personal Trainer especializado em criar programas de treino personalizados que se adaptam ao seu estilo de vida e objetivos.</p>
             <a href="#social-contact" class="cta-button">Fale comigo agora</a>
         </div>
-        <div class="hero-image">
-            <img src="https://i.ibb.co/jd7bkKP/Logobrito.jpg" alt="Logo britto" loading="lazy">
-        </div>
+        
     </section>
 
     <!-- Sobre -->
@@ -1037,9 +1042,11 @@
             </div>
             <div class="about-text">
                 <h3>Anderson Britto Personal</h3>
-                <p>Com mais de 10 anos de experiência no mundo do fitness, ajudei centenas de clientes a alcançarem seus objetivos de saúde e condicionamento físico. Minha missão é proporcionar uma transformação completa, não apenas no corpo, mas também na mente e no estilo de vida.</p>
-                <p>Minha abordagem combina ciência do exercício, nutrição e psicologia para criar programas personalizados que realmente funcionam no longo prazo. Acredito que cada pessoa é única e merece um plano feito sob medida para suas necessidades e objetivos.</p>
-                <p>Certificado pelas principais organizações de fitness do país, estou sempre me atualizando com as últimas pesquisas e técnicas do setor para oferecer o melhor aos meus clientes.</p>
+                <p>Como um profissional recém-formado e apaixonado pelo mundo do fitness, já tive a oportunidade de ajudar diversos alunos a darem os primeiros passos em direção aos seus objetivos de saúde e condicionamento físico. Minha missão é proporcionar uma transformação completa, não apenas no corpo, mas também na mente e no estilo de vida.
+</p>
+                <p>Com uma abordagem que combina ciência do exercício, nutrição e psicologia, crio programas personalizados que se adaptam às necessidades individuais de cada aluno. Acredito que cada pessoa é única e merece um plano feito sob medida para suas metas e desafios.
+</p>
+                <p>Certificado pelas principais organizações de fitness do país, estou comprometido em me atualizar constantemente com as últimas pesquisas e técnicas do setor, garantindo que meus clientes recebam orientação de qualidade e resultados duradouros.</p>
                 <a href="#social-contact" class="cta-button" style="margin-top: 20px; display: inline-block;">Agende seu treino</a>
             </div>
         </div>
@@ -1080,17 +1087,17 @@
             <div class="testimonial active">
                 <p class="testimonial-text">"O Anderson mudou minha vida! Em 6 meses perdi 15kg e ganhei uma disposição que não tinha há anos. Sua abordagem personalizada fez toda a diferença no meu processo."</p>
                 <p class="testimonial-author">Carla M.</p>
-                <p class="testimonial-role">Cliente há 1 ano</p>
+                
             </div>
             <div class="testimonial">
                 <p class="testimonial-text">"Depois de uma cirurgia no joelho, pensei que nunca mais iria correr. Com o programa especializado do Anderson, não só voltei a jogar tênis como estou melhor do que antes!"</p>
                 <p class="testimonial-author">Ricardo T.</p>
-                <p class="testimonial-role">Cliente pós-operatório</p>
+                
             </div>
             <div class="testimonial">
                 <p class="testimonial-text">"O acompanhamento online foi perfeito para minha rotina de viagens. Finalmente encontrei consistência nos treinos e já vejo resultados significativos em apenas 3 meses."</p>
                 <p class="testimonial-author">Juliana S.</p>
-                <p class="testimonial-role">Cliente online</p>
+                
             </div>
             <div class="slider-controls">
                 <div class="slider-dot active" onclick="showTestimonial(0)"></div>
@@ -1130,6 +1137,7 @@
             </div>
             <div class="copyright">
                 <p>&copy; 2025 Anderson Britto - Personal Trainer. Todos os direitos reservados.</p>
+                <p>Desenvolvido por <a href="https://portifoliogeovani.netlify.app/" target="_blank" class="dev-link">Geovani Neumann</a>.</p>
             </div>
         </div>
     </footer>
@@ -1196,7 +1204,7 @@
                 if (window.innerWidth <= 768) {
                     navMenu.classList.remove('active');
                     mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
-                }
+                }   
             });
         });
         
