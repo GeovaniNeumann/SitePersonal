@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anderson Britto - Personal Trainer especializado em treinos personalizados para transformar seu corpo e mente">
     <title>Anderson Britto | Personal Trainer Elite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@800&display=swap" rel="stylesheet">
@@ -17,6 +18,7 @@
             --light-gray: #1a1a1a;
             --dark-gray: #121212;
             --neon-effect: 0 0 10px rgba(255, 77, 77, 0.7), 0 0 20px rgba(255, 77, 77, 0.5);
+            --gradient: linear-gradient(135deg, var(--accent), var(--accent-dark));
         }
         
         * {
@@ -36,14 +38,14 @@
         }
 
         .dev-link {
-    color: #aaa; /* Cinza claro */
-    text-decoration: none;
-    font-size: 0.9rem; /* Tamanho menor */
-}
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
 
-.dev-link:hover {
-    color: var(--accent);
-}
+        .dev-link:hover {
+            color: var(--accent);
+        }
         
         /* Animação de partículas */
         .particles {
@@ -95,6 +97,8 @@
             font-family: 'Poppins', sans-serif;
             letter-spacing: 1px;
             position: relative;
+            display: flex;
+            align-items: center;
         }
         
         .logo span {
@@ -162,6 +166,8 @@
             color: var(--secondary);
             transition: all 0.3s;
             padding: 10px;
+            background: none;
+            border: none;
         }
         
         .mobile-menu:hover {
@@ -172,7 +178,7 @@
         /* Hero Section com efeito parallax */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.ibb.co/jd7bkKP/Logobrito.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
             min-height: 600px;
             display: flex;
             align-items: center;
@@ -182,34 +188,14 @@
             overflow: hidden;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%);
-            z-index: -1;
+        .hero-content {
+            max-width: 600px;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+            z-index: 2;
+            position: relative;
         }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-            opacity: 0.7;
-        }
-        
-            .hero-content {
-                max-width: 600px;
-                transform: translateY(50px);
-                opacity: 0;
-                animation: fadeInUp 1s forwards 0.5s;
-            }
         
         @keyframes fadeInUp {
             to {
@@ -234,12 +220,12 @@
             font-size: 1.3rem;
             margin-bottom: 60px;
             color: #ffffff;
-            opacity: 2.0;
+            opacity: 0.9;
         }
         
         .cta-button {
             display: inline-block;
-            background-color: var(--accent);
+            background: var(--gradient);
             color: white;
             padding: 15px 30px;
             border-radius: 30px;
@@ -255,7 +241,7 @@
         }
         
         .cta-button:hover {
-            background-color: transparent;
+            background: transparent;
             color: var(--accent);
             box-shadow: var(--neon-effect);
             transform: translateY(-3px);
@@ -286,7 +272,8 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             transition: all 0.5s ease;  
             border: 5px solid var(--accent);
-            
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
         }
         
         @keyframes float {
@@ -294,10 +281,11 @@
             50% { transform: perspective(1000px) rotateY(15deg) translateY(-20px); }
         }
         
-            .hero-image:hover {
-                transform: perspective(1000px) rotateY(0deg);
-                box-shadow: var(--neon-effect);
-            }
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+            box-shadow: var(--neon-effect);
+            animation: none;
+        }
         
         .hero-image img {
             width: 100%;
@@ -310,29 +298,43 @@
             transform: scale(1.05);
         }
         
-        /* Efeito de digitação */
-        .typewriter {
-            display: inline-block;
-            position: relative;
+        /* Stats Section */
+        .stats {
+            background: var(--dark-gray);
+            padding: 60px 5%;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
         }
         
-        .typewriter::after {
-            content: '|';
-            position: absolute;
-            right: -10px;
-            color: var(--accent);
-            animation: blink 0.7s infinite;
+        .stat-item {
+            text-align: center;
+            padding: 20px;
         }
         
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .stat-text {
+            font-size: 1.1rem;
+            color: var(--text);
+            opacity: 0.8;
         }
         
         /* Seções */
         section {
             padding: 100px 5%;
             position: relative;
+            scroll-margin-top: 80px;
         }
         
         .section-title {
@@ -384,7 +386,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://i.ibb.co/PZFGWXR8/Halteres.jpg') no-repeat center center/cover;
+            background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
             opacity: 0.1;
             z-index: 0;
         }
@@ -405,6 +407,7 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 5px solid var(--accent);
+            transition: all 0.5s ease;
         }
         
         .about-image:hover {
@@ -425,6 +428,7 @@
         
         .about-text {
             flex: 1;
+            position: relative;
         }
         
         .about-text h3 {
@@ -539,7 +543,7 @@
         
         /* Depoimentos */
         .testimonials {
-            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('https://i.ibb.co/Q7mSn3Rp/fundo-do-site-brito.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
             background-attachment: fixed;
             position: relative;
         }
@@ -646,6 +650,62 @@
             box-shadow: var(--neon-effect);
             border-color: white;
             transform: scale(1.2);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background-color: var(--light-gray);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 77, 77, 0.2);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--secondary);
+            transition: all 0.3s;
+        }
+        
+        .faq-question:hover {
+            color: var(--accent);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #d8d4d4;
+            line-height: 1.8;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 20px 20px;
         }
         
         /* Contato via WhatsApp e Instagram */
@@ -838,6 +898,46 @@
             background-repeat: no-repeat;
         }
         
+        /* Loading para imagens */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .lazy-load.loaded {
+            opacity: 1;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--neon-effect);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+        
         /* Responsividade */
         @media (max-width: 1200px) {
             .hero h1 {
@@ -877,6 +977,11 @@
             
             .social-button {
                 width: 100%;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 40px;
             }
         }
         
@@ -981,6 +1086,10 @@
             .about-text p {
                 font-size: 0.95rem;
             }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
         }
         
         @media (max-width: 400px) {
@@ -1011,25 +1120,24 @@
                 <li><a href="#about">Sobre</a></li>
                 <li><a href="#services">Serviços</a></li>
                 <li><a href="#testimonials">Depoimentos</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#social-contact">Contato</a></li>
             </ul>
         </nav>
-        <div class="mobile-menu" id="mobile-menu">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Abrir menu">
             <i class="fas fa-bars"></i>
-        </div>
+        </button>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <img src="https://i.imgur.com/C5Gwy4s.jpeg" alt="Background" class="hero-bg" loading="lazy">
         <div class="hero-content">
             <h1>Transforme seu corpo e sua mente</h1>
             <p>Personal Trainer especializado em criar programas de treino personalizados que se adaptam ao seu estilo de vida e objetivos.</p>
-            <a href="#social-contact" class="cta-button">Fale comigo agora</a>
+            <a href="https://wa.me/5541999878219" class="cta-button" target="_blank" rel="noopener">Agende uma aula experimental</a>
         </div>
-        
     </section>
-
+    
     <!-- Sobre -->
     <section class="about" id="about">
         <div class="section-title">
@@ -1038,16 +1146,14 @@
         </div>
         <div class="about-content">
             <div class="about-image">
-                <img src="https://i.ibb.co/TDFF0nTb/Perfil-brito.jpg" alt="perfil britto" loading="lazy">
+                <img src="https://i.ibb.co/jd7bkKP/Logobrito.jpg" alt="Anderson Britto - Personal Trainer" loading="lazy">
             </div>
             <div class="about-text">
                 <h3>Anderson Britto Personal</h3>
-                <p>Profissional formado e apaixonado pelo mundo do fitness, já tive a oportunidade de ajudar diversos alunos a darem os primeiros passos em direção aos seus objetivos de saúde e condicionamento físico. Minha missão é proporcionar uma transformação completa, não apenas no corpo, mas também na mente e no estilo de vida.
-</p>
-                <p>Com uma abordagem que combina ciência do exercício, nutrição e psicologia, crio programas personalizados que se adaptam às necessidades individuais de cada aluno. Acredito que cada pessoa é única e merece um plano feito sob medida para suas metas e desafios.
-</p>
+                <p>Profissional formado e apaixonado pelo mundo do fitness, já tive a oportunidade de ajudar diversos alunos a darem os primeiros passos em direção aos seus objetivos de saúde e condicionamento físico. Minha missão é proporcionar uma transformação completa, não apenas no corpo, mas também na mente e no estilo de vida.</p>
+                <p>Com uma abordagem que combina ciência do exercício, nutrição e psicologia, crio programas personalizados que se adaptam às necessidades individuais de cada aluno. Acredito que cada pessoa é única e merece um plano feito sob medida para suas metas e desafios.</p>
                 <p>Estou comprometido em me atualizar constantemente com as últimas pesquisas e técnicas do setor, garantindo que meus clientes recebam orientação de qualidade e resultados duradouros.</p>
-                <a href="#social-contact" class="cta-button" style="margin-top: 20px; display: inline-block;">Agende seu treino</a>
+                <a href="https://wa.me/5541999878219" class="cta-button" style="margin-top: 20px; display: inline-block;" target="_blank" rel="noopener">Agende seu treino</a>
             </div>
         </div>
     </section>
@@ -1060,19 +1166,34 @@
         </div>
         <div class="services-grid">
             <div class="service-card">
-                <i class="fas fa-dumbbell"></i>
+                <i class="fas fa-dumbbell" aria-hidden="true"></i>
                 <h3>Treinamento Personalizado</h3>
                 <p>Sessões individuais com acompanhamento completo, focadas em seus objetivos específicos, seja emagrecimento, ganho de massa muscular ou condicionamento físico.</p>
             </div>
             <div class="service-card">
-                <i class="fas fa-laptop"></i>
+                <i class="fas fa-laptop" aria-hidden="true"></i>
                 <h3>Acompanhamento Online</h3>
-                <p>Planos de treino e nutrição com acompanhamento remoto para quem precisa de flexibilidade. Ideal para quem viaja ou tem rotina agitada.</p>
+                <p>Planos de treino e nutrição com acompanhamento remoto para quem precisa de flexibilidade. Ideal para quem viaja ou has rotina agitada.</p>
             </div>
             <div class="service-card">
-                <i class="fas fa-heartbeat"></i>
+                <i class="fas fa-heartbeat" aria-hidden="true"></i>
                 <h3>Pré e Pós-Operatório</h3>
                 <p>Programas especializados para recuperação de cirurgias e lesões com segurança. Auxílio na reabilitação e retorno às atividades físicas.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-users" aria-hidden="true"></i>
+                <h3>Treino em Grupo</h3>
+                <p>Sessões dinâmicas em pequenos grupos para quem prefere treinar com motivação coletiva. Ambiente descontraído e resultados eficientes.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-utensils" aria-hidden="true"></i>
+                <h3>Consultoria Nutricional</h3>
+                <p>Orientação alimentar personalizada para potencializar seus resultados. Planos alimentares adaptados à sua rotina e objetivos.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-home" aria-hidden="true"></i>
+                <h3>Personal Home</h3>
+                <p>Treinamento personalizado no conforto da sua casa. Equipamentos portáteis e adaptáveis para qualquer espaço.</p>
             </div>
         </div>
     </section>
@@ -1087,22 +1208,83 @@
             <div class="testimonial active">
                 <p class="testimonial-text">"O Anderson mudou minha vida! Em 6 meses perdi 15kg e ganhei uma disposição que não tinha há anos. Sua abordagem personalizada fez toda a diferença no meu processo."</p>
                 <p class="testimonial-author">Carla M.</p>
-                
+                <p class="testimonial-role">Cliente há 1 ano</p>
             </div>
             <div class="testimonial">
                 <p class="testimonial-text">"Depois de uma cirurgia no joelho, pensei que nunca mais iria correr. Com o programa especializado do Anderson, não só voltei a jogar tênis como estou melhor do que antes!"</p>
                 <p class="testimonial-author">Ricardo T.</p>
-                
+                <p class="testimonial-role">Cliente há 8 meses</p>
             </div>
             <div class="testimonial">
                 <p class="testimonial-text">"O acompanhamento online foi perfeito para minha rotina de viagens. Finalmente encontrei consistência nos treinos e já vejo resultados significativos em apenas 3 meses."</p>
                 <p class="testimonial-author">Juliana S.</p>
-                
+                <p class="testimonial-role">Cliente há 6 meses</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"As aulas em grupo são incríveis! A energia do Anderson contagia todos, e os resultados apareceram muito mais rápido do que eu esperava. Super recomendo!"</p>
+                <p class="testimonial-author">Marcos A.</p>
+                <p class="testimonial-role">Cliente há 1 ano</p>
             </div>
             <div class="slider-controls">
-                <div class="slider-dot active" onclick="showTestimonial(0)"></div>
-                <div class="slider-dot" onclick="showTestimonial(1)"></div>
-                <div class="slider-dot" onclick="showTestimonial(2)"></div>
+                <button class="slider-dot active" onclick="showTestimonial(0)" aria-label="Mostrar depoimento 1"></button>
+                <button class="slider-dot" onclick="showTestimonial(1)" aria-label="Mostrar depoimento 2"></button>
+                <button class="slider-dot" onclick="showTestimonial(2)" aria-label="Mostrar depoimento 3"></button>
+                <button class="slider-dot" onclick="showTestimonial(3)" aria-label="Mostrar depoimento 4"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="section-title">
+            <h2>Perguntas Frequentes</h2>
+            <p>Tire suas dúvidas sobre meus serviços e metodologia</p>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Como funciona a primeira consulta?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>A primeira consulta é uma avaliação completa onde conversamos sobre seus objetivos, histórico de saúde, rotina e preferências. Realizo também uma avaliação física para estabelecer parâmetros iniciais e criar um plano personalizado.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quais são as formas de pagamento?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Aceito pagamento via PIX, cartão de crédito (até 3x sem juros), transferência bancária e dinheiro. Ofereço pacotes com descontos progressivos para planos mensais, trimestrais e semestrais.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Preciso de equipamentos para o treino online?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Não necessariamente. Adapto os treinos aos equipamentos que você tem disponível. Desde treinos com peso corporal até aqueles com equipamentos completos. Posso também sugerir equipamentos básicos and acessíveis para potencializar seus resultados.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Como é o acompanhamento nutricional?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>O acompanhamento nutricional é baseado em suas preferências alimentares, rotina e objetivos. Forneço orientações personalizadas, planos alimentares práticos e sugestões de cardápios. O foco é criar hábitos sustentáveis, não dietas restritivas.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Você atende em algum local específico ou apenas à domicílio?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Atendo em academia parceira, em domicílio e também online. Para os treinos presenciais, a localização depende da sua região e da disponibilidade na agenda. Entre em contato para verificar a viibilidade para o seu endereço.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1115,11 +1297,11 @@
             <p>Entre em contato diretamente pelo WhatsApp ou Instagram</p>
         </div>
         <div class="social-buttons">
-            <a href="https://wa.me/5541999878219" class="social-button whatsapp-button" target="_blank">
-                <i class="fab fa-whatsapp"></i> WhatsApp
+            <a href="https://wa.me/5541999878219" class="social-button whatsapp-button" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
             </a>
-            <a href="https://www.instagram.com/andy_personaltrainer/" class="social-button instagram-button" target="_blank">
-                <i class="fab fa-instagram"></i> Instagram
+            <a href="https://www.instagram.com/andy_personaltrainer/" class="social-button instagram-button" target="_blank" rel="noopener">
+                <i class="fab fa-instagram" aria-hidden="true"></i> Instagram
             </a>
         </div>
     </section>
@@ -1133,14 +1315,20 @@
                 <a href="#about">Sobre</a>
                 <a href="#services">Serviços</a>
                 <a href="#testimonials">Depoimentos</a>
+                <a href="#faq">FAQ</a>
                 <a href="#social-contact">Contato</a>
             </div>
             <div class="copyright">
                 <p>&copy; 2025 Anderson Britto - Personal Trainer. Todos os direitos reservados.</p>
-                <p>Desenvolvido por <a href="https://portifoliogeovani.netlify.app/" target="_blank" class="dev-link">Geovani Neumann</a>.</p>
+                <p>Desenvolvido por <a href="https://portifoliogeovani.netlify.app/" target="_blank" class="dev-link" rel="noopener">Geovani Neumann</a>.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <!-- JavaScript -->
     <script>
@@ -1195,6 +1383,7 @@
             navMenu.classList.toggle('active');
             mobileMenu.innerHTML = navMenu.classList.contains('active') ? 
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            mobileMenu.setAttribute('aria-label', navMenu.classList.contains('active') ? 'Fechar menu' : 'Abrir menu');
         });
         
         // Fechar menu ao clicar em um link
@@ -1204,6 +1393,7 @@
                 if (window.innerWidth <= 768) {
                     navMenu.classList.remove('active');
                     mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileMenu.setAttribute('aria-label', 'Abrir menu');
                 }   
             });
         });
@@ -1245,6 +1435,8 @@
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
@@ -1255,43 +1447,6 @@
                 }
             });
         });
-        
-        // Efeito de digitação
-        const typewriterTexts = [
-            "Transforme seu corpo e sua mente",
-            "Alcance seus objetivos fitness",
-            "Supere seus limites",
-            "Mude seu estilo de vida"
-        ];
-        
-        let currentTextIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typewriterElement = document.querySelector('.typewriter');
-        
-        function typeWriter() {
-            const currentText = typewriterTexts[currentTextIndex];
-            
-            if (isDeleting) {
-                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
-            
-            if (!isDeleting && charIndex === currentText.length) {
-                isDeleting = true;
-                setTimeout(typeWriter, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                currentTextIndex = (currentTextIndex + 1) % typewriterTexts.length;
-                setTimeout(typeWriter, 500);
-            } else {
-                const speed = isDeleting ? 50 : 100;
-                setTimeout(typeWriter, speed);
-            }
-        }
         
         // Animação ao rolar
         function animateOnScroll() {
@@ -1314,6 +1469,7 @@
         // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
+            const backToTop = document.getElementById('back-to-top');
             
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1321,24 +1477,99 @@
                 header.classList.remove('scrolled');
             }
             
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
             animateOnScroll();
+        });
+        
+        // Lazy loading para imagens
+        function lazyLoadImages() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                images.forEach(img => {
+                    imageObserver.observe(img);
+                });
+            } else {
+                // Fallback para navegadores sem suporte a IntersectionObserver
+                images.forEach(img => {
+                    img.classList.add('loaded');
+                });
+            }
+        }
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Contador de estatísticas
+        function animateCounter(elementId, finalValue, duration) {
+            let startTime = null;
+            const element = document.getElementById(elementId);
+            const initialValue = 0;
+            
+            function updateCounter(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const currentValue = Math.floor(progress * (finalValue - initialValue) + initialValue);
+                element.textContent = currentValue;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = finalValue;
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
+        }
+        
+        // Botão "Voltar ao Topo"
+        const backToTopButton = document.getElementById('back-to-top');
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
         
         // Inicialização
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
-            
-            // Verificar se o elemento typewriter existe antes de chamar a função
-            if (typewriterElement) {
-                typeWriter();
-            }
-            
             animateOnScroll();
+            lazyLoadImages();
             
             // Animação inicial dos cards de serviço
             setTimeout(() => {
                 animateOnScroll();
             }, 500);
+            
+            // Iniciar contadores
+            setTimeout(() => {
+                animateCounter('clients-count', 120, 2000);
+                animateCounter('experience-count', 5, 2000);
+                animateCounter('results-count', 95, 2000);
+            }, 1000);
         });
         
         // Redimensionamento da janela
